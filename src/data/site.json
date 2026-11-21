@@ -1,0 +1,72 @@
+{
+  "name": "Md Abu Zimam",
+  "role": "Computer Science & Engineering student and Junior Software Engineer",
+  "shortRole": "CS student & software engineer",
+  "tagline": "I create, build, and innovate",
+  "description": "Portfolio of Md Abu Zimam, a Computer Science & Engineering student and Junior Software Engineer at iobytes.",
+  "location": "Bangladesh",
+  "email": "hello@mdabuzimam.dev",
+  "phone": "01798420252",
+  "phoneHref": "+8801798420252",
+  "bio": [
+    "I'm a Computer Science and Engineering student and an aspiring software engineer with a strong interest in web and software development. I work with C++, Python, JavaScript, React, Node.js, and MySQL, and I like turning ideas into practical, well-crafted solutions.",
+    "Currently, I'm a Junior Software Engineer at iobytes, where I work on real-world projects, learn industry practices, and collaborate with experienced engineers. I enjoy solving problems, exploring new technologies, and continuously improving my technical skills.",
+    "Beyond software development, I have experience with research-oriented projects, team collaboration, and technology-driven initiatives. My goal is to grow as a skilled software engineer, contribute to meaningful projects, and build innovative solutions that address real-world challenges."
+  ],
+  "now": {
+    "label": "Currently",
+    "title": "Junior Software Engineer at iobytes",
+    "description": "Building real-world products and learning from a team of experienced engineers."
+  },
+  "social": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/21mam",
+      "icon": "github",
+      "handle": "@21mam"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/md-abu-zimam-340876338/",
+      "icon": "linkedin",
+      "handle": "md-abu-zimam"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:hello@mdabuzimam.dev",
+      "icon": "mail",
+      "handle": "hello@mdabuzimam.dev"
+    },
+    {
+      "label": "Phone",
+      "href": "tel:+8801798420252",
+      "icon": "phone",
+      "handle": "01798420252"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "Present",
+      "title": "Junior Software Engineer at iobytes",
+      "description": "Working on real-world projects, learning industry practices, and collaborating with experienced software engineers."
+    },
+    {
+      "period": "University",
+      "title": "B.Sc. in Computer Science & Engineering",
+      "description": "Studying Computer Science & Engineering at American Internation University of Bangladesh"
+      
+    },
+    {
+      "period": "Always",
+      "title": "Building, learning, and sharing",
+      "description": "Working on academic and personal projects, exploring new technologies."
+    }
+  ],
+  "interests": [
+    "Clean interfaces",
+    "Open source",
+    "Problem solving",
+    "Developer tools",
+    "Learning in public"
+  ]
+}

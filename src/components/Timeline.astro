@@ -1,0 +1,23 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<ol class={`timeline ${className}`.trim()}>
+  {
+    site.timeline.map((item) => (
+      <li>
+        <span class="timeline-period">{item.period}</span>
+        <div class="timeline-body">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

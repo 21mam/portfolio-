@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Timeline from '../components/Timeline.astro';
+import type { IconName } from '../data/icons';
+import projects from '../data/projects.json';
+import site from '../data/site.json';
+
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+const social = site.social as Array<{ label: string; href: string; icon: IconName; handle?: string }>;
+const linkedin = social.find((item) => item.icon === 'linkedin');
+---
+
+<BaseLayout>
+  <div class="container">
+    <section class="hero">
+      <p class="eyebrow">
+        <span class="status-dot" aria-hidden="true"></span>
+        {site.now.title}
+      </p>
+      <h1>Hey, I'm <span class="accent">{site.name}</span></h1>
+      <p class="hero-tagline">{site.tagline}</p>
+      <p class="hero-bio">{site.bio[0]}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/projects/">
+          View projects
+          <Icon name="arrowRight" size={16} />
+        </a>
+        <a class="button button-ghost" href="/about/">More about me</a>
+      </div>
+      <ul class="social-row">
+        {
+          social.map((item) => (
+            <li>
+              <a
+                class="social-pill"
+                href={item.href}
+                target={item.href.startsWith('http') ? '_blank' : undefined}
+                rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+              >
+                <Icon name={item.icon} size={15} />
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>A brief timeline</h2>
+        <a class="section-link" href="/about/">Full story →</a>
+      </div>
+      <Timeline />
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Featured projects</h2>
+        <a class="section-link" href="/projects/">All projects →</a>
+      </div>
+      <div class="project-grid">
+        {
+          featuredProjects.map((project) => (
+            <ProjectCard project={project} />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="cta panel">
+      <p class="eyebrow">Elsewhere</p>
+      <h2>Let's build something useful.</h2>
+      <p>
+        I'm always happy to talk about software, internships, or interesting ideas. The fastest way to reach me is
+        email.
+      </p>
+      <div class="cta-actions">
+        <a class="button button-primary" href={`mailto:${site.email}`}>
+          Email me
+          <Icon name="mail" size={16} />
+        </a>
+        {
+          linkedin && (
+            <a class="button button-ghost" href={linkedin.href} target="_blank" rel="noreferrer">
+              LinkedIn
+              <Icon name="arrowUpRight" size={16} />
+            </a>
+          )
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

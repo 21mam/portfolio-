@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import SkillLogo from '../components/SkillLogo.astro';
+import Timeline from '../components/Timeline.astro';
+import profile from '../assets/profile.jpg';
+import type { IconName } from '../data/icons';
+import site from '../data/site.json';
+import skillsData from '../data/skills.json';
+
+interface Skill {
+  name: string;
+  icon: string;
+  category: string;
+}
+
+const skills = skillsData as Skill[];
+const categories = [...new Set(skills.map((skill) => skill.category))];
+const groupedSkills = categories.map((category) => ({
+  category,
+  items: skills.filter((skill) => skill.category === category),
+}));
+
+const social = site.social as Array<{ label: string; href: string; icon: IconName; handle?: string }>;
+---
+
+<BaseLayout title="About" description={`More about ${site.name} — background, skills, and contact.`}>
+  <div class="container">
+    <header class="page-header">
+      <p class="eyebrow">About</p>
+      <h1>A little about me</h1>
+      <p>
+        I'm a Computer Science &amp; Engineering student and a Junior Software Engineer at iobytes, based in
+        {site.location}.
+      </p>
+    </header>
+
+    <div class="about-grid">
+      <figure class="about-photo">
+        <Image src={profile} alt={`Portrait of ${site.name}`} width={480} height={640} />
+      </figure>
+
+      <div class="about-copy">
+        {
+          site.bio.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))
+        }
+        <p class="about-location">
+          <Icon name="mapPin" size={16} />
+          {site.location}
+        </p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Experience &amp; education</h2>
+      </div>
+      <Timeline />
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Skills &amp; tools</h2>
+      </div>
+      <div class="skill-groups">
+        {
+          groupedSkills.map((group) => (
+            <div class="skill-group">
+              <h3 class="skill-group-title">{group.category}</h3>
+              <div class="skills-grid">
+                {group.items.map((skill) => (
+                  <div class="skill">
+                    <SkillLogo name={skill.icon} size={20} />
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Outside of code</h2>
+      </div>
+      <ul class="interest-list">
+        {
+          site.interests.map((interest) => (
+            <li>{interest}</li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="cta panel">
+      <p class="eyebrow">Contact</p>
+      <h2>Say hello</h2>
+      <p>Have a project, an internship, or a question? I'd love to hear from you.</p>
+      <ul class="contact-list">
+        <li>
+          <a class="contact-item" href={`mailto:${site.email}`}>
+            <Icon name="mail" size={18} />
+            {site.email}
+          </a>
+        </li>
+        <li>
+          <a class="contact-item" href={`tel:${site.phoneHref}`}>
+            <Icon name="phone" size={18} />
+            {site.phone}
+          </a>
+        </li>
+        {
+          social
+            .filter((item) => item.icon === 'github' || item.icon === 'linkedin')
+            .map((item) => (
+              <li>
+                <a class="contact-item" href={item.href} target="_blank" rel="noreferrer">
+                  <Icon name={item.icon} size={18} />
+                  {item.label}
+                  <span class="contact-handle">{item.handle}</span>
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

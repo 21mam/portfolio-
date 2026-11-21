@@ -1,0 +1,41 @@
+[
+  {
+    "id": "mr.abuvseveryone",
+    "title": "Mr.Abu VS Everyone",
+    "year": "2025",
+    "description": "A OpenGL game project build for computer graphics project",
+    "tags": ["OpenGL","c++"],
+    "role": "Backend developer",
+    "status": "Completed",
+    "featured": true,
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/21mam/Mr.ABU-VS-Everyone-OpenGL-AIUB-", "icon": "github" }
+    ]
+  },
+  {
+    "id": "weather-dashboard",
+    "title": "Weather Dashboard",
+    "year": "2026",
+    "description": "A responsive React dashboard that shows current conditions and a multi-day forecast for any city.",
+    "tags": ["React", "JavaScript", "API"],
+    "role": "Frontend developer",
+    "status": "Completed",
+    "featured": true,
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/21mam", "icon": "github" }
+    ]
+  },
+  {
+    "id": "portfolio-website",
+    "title": "Portfolio Website",
+    "year": "2026",
+    "description": "This site: a fast, content-first portfolio built with Astro, React, and a WebGL dot grid.",
+    "tags": ["Astro", "React", "TypeScript"],
+    "role": "Design & development",
+    "status": "Ongoing",
+    "featured": true,
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/21mam", "icon": "github" }
+    ]
+  }
+]

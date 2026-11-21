@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import type { IconName } from '../../data/icons';
+import projects from '../../data/projects.json';
+import site from '../../data/site.json';
+
+const featured = projects.filter((project) => project.featured);
+const rest = projects
+  .filter((project) => !project.featured)
+  .sort((a, b) => Number(b.year) - Number(a.year));
+
+const github = (site.social as Array<{ label: string; href: string; icon: IconName; handle?: string }>).find(
+  (item) => item.icon === 'github',
+);
+---
+
+<BaseLayout
+  title="Projects"
+  description={`Projects I've built — web apps, APIs, and academic work by ${site.name}.`}
+>
+  <div class="container">
+    <header class="page-header">
+      <p class="eyebrow">Work</p>
+      <h1>Projects</h1>
+      <p>
+        A selection of things I've built — web apps, APIs, and academic projects. Most of them started as a way to
+        learn something new.
+      </p>
+    </header>
+
+    {
+      featured.length > 0 && (
+        <section class="section section--first">
+          <div class="section-head">
+            <h2>Featured</h2>
+          </div>
+          <div class="project-grid">
+            {featured.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="section">
+      <div class="section-head">
+        <h2>All projects</h2>
+      </div>
+      <ol class="project-list">
+        {
+          rest.map((project) => {
+            const links = (project.links ?? []) as Array<{ label: string; href: string; icon?: IconName }>;
+            return (
+              <li class="project-row">
+                <span class="project-year">{project.year}</span>
+                <div class="project-row-body">
+                  <div class="project-row-head">
+                    <h3>{project.title}</h3>
+                    <span class="project-status">{project.status}</span>
+                  </div>
+                  <p>{project.description}</p>
+                  <div class="project-row-meta">
+                    <div class="project-tags">
+                      {project.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                    {links.length > 0 && (
+                      <div class="project-links">
+                        {links.map((link) => (
+                          <a class="project-link" href={link.href} target="_blank" rel="noreferrer">
+                            {link.icon && <Icon name={link.icon} size={14} />}
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </section>
+
+    <section class="cta panel">
+      <p class="eyebrow">Open source</p>
+      <h2>More on GitHub</h2>
+      <p>I share most of my experiments and side projects there. Feel free to look around or open an issue.</p>
+      {
+        github && (
+          <div class="cta-actions">
+            <a class="button button-primary" href={github.href} target="_blank" rel="noreferrer">
+              Visit GitHub
+              <Icon name="arrowUpRight" size={16} />
+            </a>
+          </div>
+        )
+      }
+    </section>
+  </div>
+</BaseLayout>

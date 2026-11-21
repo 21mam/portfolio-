@@ -1,0 +1,28 @@
+{
+  "name": "md-abu-zimam-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio for Md Abu Zimam — built with Astro, React, and a WebGL dot grid.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "node scripts/generate-og.mjs && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "og": "node scripts/generate-og.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^7.1.9",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "simple-icons": "^16.38.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "sharp": "^0.35.5"
+  }
+}

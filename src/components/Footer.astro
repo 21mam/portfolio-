@@ -1,0 +1,32 @@
+---
+import site from '../data/site.json';
+import type { IconName } from '../data/icons';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+const social = site.social as Array<{ label: string; href: string; icon: IconName; handle?: string }>;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© {year} {site.name}. All rights reserved.</p>
+    <p class="footer-built">
+      Built with <a href="https://astro.build/" target="_blank" rel="noreferrer">Astro</a>, React &amp; a WebGL
+      dot grid.
+    </p>
+    <div class="footer-links">
+      {
+        social.map((item) => (
+          <a
+            href={item.href}
+            aria-label={item.label}
+            target={item.href.startsWith('http') ? '_blank' : undefined}
+            rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+          >
+            <Icon name={item.icon} size={16} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</footer>

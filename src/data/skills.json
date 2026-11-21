@@ -1,0 +1,13 @@
+[
+  { "name": "C++", "icon": "cplusplus", "category": "Languages" },
+  { "name": "Python", "icon": "python", "category": "Languages" },
+  { "name": "JavaScript", "icon": "javascript", "category": "Languages" },
+  { "name": "HTML", "icon": "html5", "category": "Frontend" },
+  { "name": "CSS", "icon": "css", "category": "Frontend" },
+  { "name": "React", "icon": "react", "category": "Frontend" },
+  { "name": "Node.js", "icon": "nodedotjs", "category": "Backend" },
+  { "name": "MySQL", "icon": "mysql", "category": "Backend" },
+  { "name": "Git & GitHub", "icon": "github", "category": "Tools" },
+  { "name": "Excel", "icon": "excel", "category": "Tools" },
+  { "name": "Word", "icon": "word", "category": "Tools" }
+]
